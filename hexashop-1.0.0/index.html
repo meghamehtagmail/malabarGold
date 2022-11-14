@@ -844,14 +844,24 @@ https://templatemo.com/tm-571-hexashop
     </script>
 	
 	<script>
-		window.adobeDataLayer = window.adobeDataLayer || [];
-		window.adobeDataLayer.push({
-			"page": {
-					"title": "Getting Started"
-			}
-		});
+		digitalData = {
+			 pageInstanceID: "MyHomePage-Production",
+			 page:{
+				 pageInfo: {
+					 pageID: "Home Page",
+					 destinationURL: "http://mysite.com/index.html"},
+				 category:{
+					 primaryCategory: "FAQ Pages",
+					 subCategory1: "ProductInfo",
+					 pageType: "FAQ"},
+				 attributes:{
+					 country: "US",
+					 language: "en-US"}
+			 }
+ };
+
 	</script>
-	<script src="adobe-client-data-layer.min.js" defer async></script>
+
 
   </body>
 </html>
