@@ -873,7 +873,9 @@ if (typeof window.addEventListener != "undefined") {
 	   targetPageParams("Men");
 	});
 } else {
-    link1.attachEvent("onclick",handleclick);
+    link1.attachEvent("onclick",function(){
+	  console.log("Onclick");
+	});
 }
 	</script>
 
