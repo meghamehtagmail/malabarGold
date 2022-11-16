@@ -22,12 +22,43 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-	<script src="https://assets.adobedtm.com/08c6c96e8270/34cd58d1be23/launch-c171efc7a1be-development.min.js" async></script>
 	<script type="text/javascript"> 
 	function targetPageParams(interest) { 
           return "searchInterest="+interest;
         } 
 	</script>
+	<script type="text/javascript">
+	;(function(win, doc, style, timeout) {
+    var STYLE_ID = 'at-body-style';
+    function getParent() {
+      return doc.getElementsByTagName('head')[0];
+    }
+    function addStyle(parent, id, def) {
+      if (!parent) {
+        return;
+      }
+      var style = doc.createElement('style');
+      style.id = id;
+      style.innerHTML = def;
+      parent.appendChild(style);
+    }
+    function removeStyle(parent, id) {
+      if (!parent) {
+        return;
+      }
+      var style = doc.getElementById(id);
+      if (!style) {
+        return;
+      }
+      parent.removeChild(style);
+    }
+    addStyle(getParent(), STYLE_ID, style);
+    setTimeout(function() {
+      removeStyle(getParent(), STYLE_ID);
+    }, timeout);
+  }(window, document, "body {opacity: 0 !important}", 3000));
+	</script>
+	<script src="https://assets.adobedtm.com/08c6c96e8270/34cd58d1be23/launch-c171efc7a1be-development.min.js" async></script>
 <!--
 
 TemplateMo 571 Hexashop
@@ -864,19 +895,6 @@ https://templatemo.com/tm-571-hexashop
 					 language: "en-US"}
 			 }
  };
- 
- 
-var link1 = document.getElementById("MenPage");
-if (typeof window.addEventListener != "undefined") {
-    link1.addEventListener("click",function (){
-	   console.log("Clicked");
-	   targetPageParams("Men");
-	});
-} else {
-    link1.attachEvent("onclick",function(){
-	  console.log("Onclick");
-	});
-}
 	</script>
 
 
