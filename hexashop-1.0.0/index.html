@@ -23,6 +23,11 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 	<script src="https://assets.adobedtm.com/08c6c96e8270/34cd58d1be23/launch-c171efc7a1be-development.min.js" async></script>
+	<script type="text/javascript"> 
+	function targetPageParams(interest) { 
+          return "searchInterest="+interest;
+        } 
+	</script>
 <!--
 
 TemplateMo 571 Hexashop
@@ -860,15 +865,12 @@ https://templatemo.com/tm-571-hexashop
 			 }
  };
  
- function handleclick() {
-    console.log("Clicked");
-    return false;
-}
  
 var link1 = document.getElementById("MenPage");
 if (typeof window.addEventListener != "undefined") {
     link1.addEventListener("click",function (){
-	   handleClick();
+	   console.log("Clicked");
+	   targetPageParams("Men");
 	});
 } else {
     link1.attachEvent("onclick",handleclick);
