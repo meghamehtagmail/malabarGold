@@ -59,9 +59,9 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
-                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
+                            <li class="scroll-to-section"><a href="#men" id="MenPage">Men's</a></li>
+                            <li class="scroll-to-section"><a href="#women" id="WomenPage">Women's</a></li>
+                            <li class="scroll-to-section"><a href="#kids" id="KidPage">Kid's</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Pages</a>
                                 <ul>
@@ -859,7 +859,21 @@ https://templatemo.com/tm-571-hexashop
 					 language: "en-US"}
 			 }
  };
-
+ 
+ function handleclick() {
+    console.log("Clicked");
+    return false;
+}
+ 
+var link1 = document.getElementById("MenPage");
+if (typeof window.addEventListener != "undefined") {
+    link1.addEventListener("click",function (evt){
+	   console.log(evt);
+	   handleClick();
+	});
+} else {
+    link1.attachEvent("onclick",handleclick);
+}
 	</script>
 
 
