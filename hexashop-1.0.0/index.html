@@ -22,6 +22,67 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+	  //Item 1
+
+adobeDataLayer.push(
+
+{
+
+event: 'page track',
+
+page: {
+
+experienceType: "mobile" || "desktop",
+
+is404: true || false,
+
+lang: "english" || "spanish",
+
+name: "rewards",
+
+sitesection1: "secure",
+
+sitesection2: "trackmyapp",
+
+sitesection3: "",
+
+sitesection4: "",
+
+test: "<Adobe Target activity ID, if present>",
+
+group: "<type of page>", //examples: product, search, content
+
+},
+
+user: {
+
+loginStatus: "logged in",
+
+userType: "member>m&r",
+
+groupId: "",
+
+carrierId: "",
+
+hsid: "",
+
+rallyId: "",
+
+patientId: "", //This value is required to be encrypted. If you do not encrypt it, the value is PII and you will be accountable for passing it. See encryption logic in the linked document below.
+
+payerGroup: "m&r",
+
+memberId: "", //This value is required to be encrypted. If you do not encrypt it, the value is PII and you will be accountable for passing it. See encryption logic in the linked document below.
+
+},
+
+customAttributes: {
+
+planStatus: "effective" || "pre-effective"
+
+}
+
+})
 <!--
 
 TemplateMo 571 Hexashop
