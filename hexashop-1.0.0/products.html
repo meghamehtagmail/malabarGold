@@ -486,10 +486,69 @@ event: 'page track',
 page: {
 pageName:'products',
 pageType:'category',
-experienceType: 'desktop'
+experienceType: 'desktop',
+category:'generic'
 
 }
 })
+
+
+        document.querySelector("body > header > div > div > div > nav > ul > li:nth-child(5) > ul > li:nth-child(2) > a").onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+
+clickedElement:'Products'
+}
+})
+	
+}
+document.querySelector("body > header > div > div > div > nav > ul > li:nth-child(5) > ul > li:nth-child(3) > a").onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+
+clickedElement:'Single Product'
+}
+})
+	
+}
+document.querySelector('#MenPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+
+clickedElement:'men'	
+}
+})
+	
+}
+		document.querySelector('#KidPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+
+clickedElement:'kids'	
+}
+})
+	
+}
+		document.querySelector('#WomenPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+
+clickedElement:'women'	
+}
+})
+	
+}
+
 </script>
 
   </body>
