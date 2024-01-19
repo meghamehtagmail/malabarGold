@@ -862,6 +862,45 @@ experienceType: "desktop"
 
 }
 })
+
+document.querySelector('#MenPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+pageName:'home',
+pageType:'home',
+clickedElement:'men'	
+}
+})
+	
+}
+		document.querySelector('#KidPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+pageName:'home',
+pageType:'home',
+clickedElement:'kids'	
+}
+})
+	
+}
+		document.querySelector('#WomenPage').onclick=function(){
+window.adobeDataLayer.push(
+{
+event: 'link track',
+page: {
+pageName:'home',
+pageType:'home',
+clickedElement:'women'	
+}
+})
+	
+}
+
+		
 </script>
 
 
