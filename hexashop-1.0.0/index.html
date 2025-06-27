@@ -856,7 +856,7 @@ https://templatemo.com/tm-571-hexashop
     </script>
 	
 	<script>
-/**window.adobeDataLayer = window.adobeDataLayer || [];
+window.adobeDataLayer = window.adobeDataLayer || [];
 window.adobeDataLayer.push(
 {
 event: 'page track',
@@ -866,8 +866,8 @@ pageType:'home',
 experienceType: "desktop"	
 
 }
-})**/
-window.adobeDataLayer = window.adobeDataLayer || [];
+})
+/**window.adobeDataLayer = window.adobeDataLayer || [];
 window.adobeDataLayer.push({
 "eventType": "web.webPageDetails.pageViews",
 "web":{
@@ -899,7 +899,7 @@ window.adobeDataLayer.push({
             "type":""
          }
       }
-});		
+});	**/	
 document.querySelector("body > header > div > div > div > nav > ul > li:nth-child(5) > ul > li:nth-child(2) > a").onclick=function(){
 window.adobeDataLayer.push(
 {
