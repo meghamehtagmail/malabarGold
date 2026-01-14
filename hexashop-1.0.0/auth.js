@@ -1,4 +1,4 @@
-<script>
+
 function registerUser() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -38,4 +38,3 @@ function checkAuth() {
     window.location.href = "login.html";
   }
 }
-</script>
