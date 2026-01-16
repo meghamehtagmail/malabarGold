@@ -20,43 +20,43 @@
   <h2>Featured Products</h2>
 
   <div class="grid">
-    <div class="card">
+    <div class="card" data-product-name="Product 1"> 
       <h3>Product 1</h3>
       <p>₹999</p>
       <a href="product.html"><button>View</button></a>
     </div>
 
-    <div class="card">
+    <div class="card" data-product-name="Product 2">
       <h3>Product 2</h3>
       <p>₹1499</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 3">
       <h3>Product 3</h3>
       <p>₹1599</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 4">
       <h3>Product 4</h3>
       <p>₹1699</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 5">
       <h3>Product 5</h3>
       <p>₹1799</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 6">
       <h3>Product 6</h3>
       <p>₹1899</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 7">
       <h3>Product 7</h3>
       <p>₹1999</p>
       <a href="product.html"><button>View</button></a>
     </div>
-    <div class="card">
+    <div class="card" data-product-name="Product 8">
       <h3>Product 8</h3>
       <p>₹2099</p>
       <a href="product.html"><button>View</button></a>
@@ -77,5 +77,29 @@
   }
 });
 </script>
+
+
+  <script>
+  window.adobeDataLayer = window.adobeDataLayer || [];
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", function () {
+      const productName = this.getAttribute("data-product-name");
+
+      adobeDataLayer.push({
+        event: "page track",
+        page: {
+          name: "home"
+        },
+        interaction: {
+          name: productName
+        }
+      });
+
+      console.log("DataLayer fired for:", productName);
+    });
+  });
+</script>
+
 </body>
 </html>
