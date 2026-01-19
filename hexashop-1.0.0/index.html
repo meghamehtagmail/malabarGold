@@ -99,7 +99,22 @@
       console.log("DataLayer fired for:", productName);
     });
   });
+var a =localStorage.getItem('user').split(',')[0].split(':')[1]
+    var emailID = JSON.parse(a)
+    
+    if(localStorage.getItem('loggedIn')=="true")
+    {
+      adobeDataLayer.push({
+        event: "user track",
+        loggedInDetails: {
+          loggedIn: "true",
+          emailId=emailID
+          
+        }
+      });
+    }
 </script>
+  
 
 </body>
 </html>
