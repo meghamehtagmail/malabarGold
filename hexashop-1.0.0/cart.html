@@ -41,6 +41,20 @@
     "name":"cart"
   }
 });
+   if(localStorage.getItem('loggedIn')=="true")
+    {
+      var a =localStorage.getItem('user').split(',')[0].split(':')[1]
+    var emailID = JSON.parse(a)
+    
+      adobeDataLayer.push({
+        event: "user track",
+        loggedInDetails: {
+          loggedIn: "true",
+          emailId : emailID
+          
+        }
+      });
+    }
 </script>
 </body>
 </html>
