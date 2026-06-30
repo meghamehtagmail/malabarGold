@@ -67,52 +67,6 @@
 <footer>
   © 2026 My Store
 </footer>
- <script>
-   window.discoveryData = {
-  page: window.location.href,
-  atjsVersion: adobe.target.VERSION,
-  globalSettings: window.targetGlobalSettings,
-  mboxes: [],
-     networkCalls: []
-};
-   // Capture all mboxes on page
-document.querySelectorAll('[class*="mbox"]').forEach(el => {
-  discoveryData.mboxes.push({
-    name: el.className,
-    element: el.tagName,
-    id: el.id
-  });
-});
-
-
-const originalOpen = XMLHttpRequest.prototype.open;
-const originalSend = XMLHttpRequest.prototype.send;
-
-XMLHttpRequest.prototype.open = function(method, url) {
-  this._url = url;
-  this._method = method;
-
-  return originalOpen.apply(this, arguments);
-};
-
-XMLHttpRequest.prototype.send = function(body) {
-
-  if (this._url && this._url.includes("tt.omtrdc.net")) {
-
-    discoveryData.networkCalls.push({
-      type: "xhr",
-      method: this._method,
-      url: this._url,
-      payload: body,
-      timestamp: new Date().toISOString()
-    });
-
-  }
-
-  return originalSend.apply(this, arguments);
-};
- </script>
-
 <script>
 
       window.adobeDataLayer = window.adobeDataLayer || [];
