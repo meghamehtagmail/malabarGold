@@ -69,8 +69,21 @@
 </footer>
  <script>
    window.discoveryData = {
-  networkCalls: []
+  page: window.location.href,
+  atjsVersion: adobe.target.VERSION,
+  globalSettings: window.targetGlobalSettings,
+  mboxes: [],
+     networkCalls: []
 };
+   // Capture all mboxes on page
+document.querySelectorAll('[class*="mbox"]').forEach(el => {
+  discoveryData.mboxes.push({
+    name: el.className,
+    element: el.tagName,
+    id: el.id
+  });
+});
+
 
 const originalOpen = XMLHttpRequest.prototype.open;
 const originalSend = XMLHttpRequest.prototype.send;
