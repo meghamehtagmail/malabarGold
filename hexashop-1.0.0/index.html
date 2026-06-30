@@ -3,46 +3,63 @@
 <head>
   <title>Home</title>
   <link rel="stylesheet" href="assets/css/ecommerce.css">
-  <script>
-    window.discoveryData = {
+    <script src="https://assets.adobedtm.com/6d07e8369d1a/cf24e92f57e1/launch-c4d0fe2dbc9d-development.min.js"></script>
+  </head>
+<body>
+<script>
+  window.discoveryData = {
   page: window.location.href,
-  atjsVersion: adobe.target.VERSION,
-  globalSettings: window.targetGlobalSettings,
+  atjsVersion: window.adobe?.target?.VERSION || "unknown",
+  globalSettings: window.targetGlobalSettings || {},
   mboxes: [],
   networkCalls: []
 };
 
+
 const originalOpen = XMLHttpRequest.prototype.open;
 const originalSend = XMLHttpRequest.prototype.send;
 
+
 XMLHttpRequest.prototype.open = function(method, url) {
+
   this._url = url;
   this._method = method;
 
   return originalOpen.apply(this, arguments);
 };
 
+
 XMLHttpRequest.prototype.send = function(body) {
 
-  if (this._url && this._url.includes("tt.omtrdc.net")) {
+  if (
+    this._url &&
+    this._url.includes("tt.omtrdc.net") &&
+    this._url.includes("/delivery")
+  ) {
 
-    discoveryData.networkCalls.push({
-      type: "xhr",
-      method: this._method,
-      url: this._url,
-      payload: body,
-      timestamp: new Date().toISOString()
+    const request = {
+      type:"Target Delivery API",
+      method:this._method,
+      url:this._url,
+      requestPayload:body,
+      timestamp:new Date().toISOString()
+    };
+
+
+    this.addEventListener("load", function(){
+
+      request.response = this.responseText;
+
+      discoveryData.networkCalls.push(request);
+
     });
 
   }
 
+
   return originalSend.apply(this, arguments);
 };
-  </script>
-  <script src="https://assets.adobedtm.com/6d07e8369d1a/cf24e92f57e1/launch-c4d0fe2dbc9d-development.min.js"></script>
-  </head>
-<body>
-
+</script>
 <header>
   <nav>
     <a href="index.html">Home</a>
