@@ -3,7 +3,38 @@
 <head>
   <title>Home</title>
   <link rel="stylesheet" href="assets/css/ecommerce.css">
-<script src="https://assets.adobedtm.com/6d07e8369d1a/cf24e92f57e1/launch-c4d0fe2dbc9d-development.min.js" async></script>
+  <script src="https://assets.adobedtm.com/6d07e8369d1a/cf24e92f57e1/launch-c4d0fe2dbc9d-development.min.js" async></script>
+  <script>
+    const discoveryData = {
+  page: window.location.href,
+  atjsVersion: adobe.target.VERSION,
+  globalSettings: window.targetGlobalSettings,
+  mboxes: [],
+  networkCalls: []
+};
+
+// Capture all mboxes on page
+document.querySelectorAll('[class*="mbox"]').forEach(el => {
+  discoveryData.mboxes.push({
+    name: el.className,
+    element: el.tagName,
+    id: el.id
+  });
+});
+
+// Monitor network calls
+const originalFetch = window.fetch;
+window.fetch = function(...args) {
+  if (args[0].includes('tt.omtrdc.net')) {
+    discoveryData.networkCalls.push({
+      url: args[0],
+      timestamp: new Date().toISOString()
+    });
+  }
+  return originalFetch.apply(this, args);
+};
+  </script>
+
 </head>
 <body>
 
@@ -115,36 +146,7 @@
       });
     }
 </script>
-  <script>
-    const discoveryData = {
-  page: window.location.href,
-  atjsVersion: adobe.target.VERSION,
-  globalSettings: window.targetGlobalSettings,
-  mboxes: [],
-  networkCalls: []
-};
 
-// Capture all mboxes on page
-document.querySelectorAll('[class*="mbox"]').forEach(el => {
-  discoveryData.mboxes.push({
-    name: el.className,
-    element: el.tagName,
-    id: el.id
-  });
-});
-
-// Monitor network calls
-const originalFetch = window.fetch;
-window.fetch = function(...args) {
-  if (args[0].includes('tt.omtrdc.net')) {
-    discoveryData.networkCalls.push({
-      url: args[0],
-      timestamp: new Date().toISOString()
-    });
-  }
-  return originalFetch.apply(this, args);
-};
-  </script>
   
 
 </body>
