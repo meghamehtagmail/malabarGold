@@ -115,6 +115,36 @@
       });
     }
 </script>
+  <script>
+    const discoveryData = {
+  page: window.location.href,
+  atjsVersion: adobe.target.VERSION,
+  globalSettings: window.targetGlobalSettings,
+  mboxes: [],
+  networkCalls: []
+};
+
+// Capture all mboxes on page
+document.querySelectorAll('[class*="mbox"]').forEach(el => {
+  discoveryData.mboxes.push({
+    name: el.className,
+    element: el.tagName,
+    id: el.id
+  });
+});
+
+// Monitor network calls
+const originalFetch = window.fetch;
+window.fetch = function(...args) {
+  if (args[0].includes('tt.omtrdc.net')) {
+    discoveryData.networkCalls.push({
+      url: args[0],
+      timestamp: new Date().toISOString()
+    });
+  }
+  return originalFetch.apply(this, args);
+};
+  </script>
   
 
 </body>
