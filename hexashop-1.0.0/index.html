@@ -6,7 +6,7 @@
   <script>
 window.discoveryData = {
   page: window.location.href,
-  atjsVersion: window.adobe?.target?.VERSION || "unknown",
+  //atjsVersion: window.adobe?.target?.VERSION || "unknown",
   globalSettings: window.targetGlobalSettings || {},
   networkCalls: []
 };
@@ -146,6 +146,7 @@ XMLHttpRequest.prototype.send = function(body) {
         }
       });
     }
+    discoveryData.atjsVersion = window.adobe?.target?.VERSION || "unknown";
 </script>
 
   
